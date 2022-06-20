@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 10:57 PM
+-- Generation Time: Jun 20, 2022 at 03:11 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -33,16 +33,15 @@ CREATE TABLE `tb_admin` (
   `nama_lengkap` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `no_handphone` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `admin` varchar(100) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_admin`
 --
 
-INSERT INTO `tb_admin` (`id_admin`, `nama_panggilan`, `nama_lengkap`, `email`, `no_handphone`, `password`, `admin`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '085464574353', '$2y$10$WCTtjuoKxk3QPtmySUZy7ODy6GyoJ5Og0V0yMAAYkOysAicyQRAFy', 'admin');
+INSERT INTO `tb_admin` (`id_admin`, `nama_panggilan`, `nama_lengkap`, `email`, `no_handphone`, `password`) VALUES
+(2, 'Admin', 'Admin', 'adminn@gmail.com', '08534476598', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -80,7 +79,7 @@ CREATE TABLE `tb_pekerjaan` (
 --
 
 INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `pekerjaan`) VALUES
-(1, 'Nelayan'),
+(1, 'Nelayann'),
 (2, 'Guru'),
 (3, 'Buruh Bangunan'),
 (4, 'Pengusaha'),
@@ -134,7 +133,30 @@ CREATE TABLE `tb_penduduk` (
 --
 
 INSERT INTO `tb_penduduk` (`id_penduduk`, `id_kelurahan`, `nik`, `no_kartu_keluarga`, `nama_lengkap`, `tempat_lahir`, `tangal_lahir`, `alamat`, `jenis_kelamin`, `agama`, `status`, `id_pendidikan`, `id_pekerjaan`) VALUES
-(1, 7, 2147483647, 2147483647, 'Agus Salim', 'Tamaklaklang', '2022-06-17', 'Galesong Selatan', 'Laki-laki', 'Kristen', 'Sudah Menikah', 13, 1);
+(1, 9, 2147483647, 2147483647, 'Agus Salim', 'Tamaklaklang', '2022-06-17', 'Galesong Selatan', 'Laki-laki', 'Kristen', 'Sudah Menikah', 13, 1),
+(3, 8, 32131, 213213123, 'Aldin', 'Makassar', '2000-11-07', 'Puri', 'Laki-laki', 'Islam', 'Belom Menikah', 16, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_user`
+--
+
+CREATE TABLE `tb_user` (
+  `id_user` int(11) NOT NULL,
+  `nama_panggilan` varchar(100) NOT NULL,
+  `nama_lengkap` varchar(100) NOT NULL,
+  `no_handphone` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_user`
+--
+
+INSERT INTO `tb_user` (`id_user`, `nama_panggilan`, `nama_lengkap`, `no_handphone`, `email`, `password`) VALUES
+(1, 'suharti', 'suhati putri', '085676987091', 'suharti@gmail.com', 'password');
 
 --
 -- Indexes for dumped tables
@@ -179,6 +201,12 @@ ALTER TABLE `tb_penduduk`
   ADD KEY `pendidikan_id_2` (`id_pendidikan`);
 
 --
+-- Indexes for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -186,7 +214,7 @@ ALTER TABLE `tb_penduduk`
 -- AUTO_INCREMENT for table `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_kelurahan`
@@ -198,19 +226,25 @@ ALTER TABLE `tb_kelurahan`
 -- AUTO_INCREMENT for table `tb_pekerjaan`
 --
 ALTER TABLE `tb_pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_pendidikan`
 --
 ALTER TABLE `tb_pendidikan`
-  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pendidikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_penduduk`
 --
 ALTER TABLE `tb_penduduk`
-  MODIFY `id_penduduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_penduduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tb_user`
+--
+ALTER TABLE `tb_user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

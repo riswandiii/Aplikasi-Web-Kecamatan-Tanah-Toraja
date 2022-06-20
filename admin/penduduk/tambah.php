@@ -33,7 +33,7 @@ function kelurahan($query){
 $tb_kelurahan = kelurahan("SELECT * FROM tb_kelurahan");
 
 //untuk menampilkan menul pendidikan di form tambah 
-//function pendidikan untuk menampilkan tabel data kelurahan
+//function pendidikan untuk menampilkan tabel data pendidikan
 function pendidikan($query){
 
     global $con;

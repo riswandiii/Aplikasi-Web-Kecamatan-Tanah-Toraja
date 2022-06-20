@@ -22,14 +22,17 @@ $usr = mysqli_fetch_array($user);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>Kelurahan All</title>
 
     <style>
        #ul {
         position: relative;
         z-index: 200;
-
       }
+      
+      #container-fluid {
+            height: 580px;
+        }
     </style>
 
     <!-- {{-- Link Animation aos --}} -->
@@ -83,51 +86,38 @@ $usr = mysqli_fetch_array($user);
 
     <div class="container-fluid" id="container-fluid">
         <div class="container py-5">
-            <div class="row  text-center text-white">
-                <div class="col-lg-12 mt-1">
-                    <h3>Selamat Datang Di Website</h3>
-                </div>
-            </div>
     
             <div class="row text-center text-white mt-3">
                 <div class="col-lg-8 offset-lg-2">
-                    <h1 class="mb-4">~KECAMATAN TANAH TORAJA BERBASIS WEB~</h1>
+                    <h1 class="mb-4">~Daftar Kelurahan Di Tanah Toraja~</h1>
                     <hr>
                 </div>
             </div>
     
-            <div class="row text-center text-white py-3 bg-dark p-5 mt-3 gx-1 align-items-center">
-                <div class="col-lg-12 mt-3">
-                    <h3  data-aos="zoom-in" data-aos-duration="2000">-TORAJA-</h3>
-                </div>
-            
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="2000">
-                    <p>Kabupaten Tana Toraja adalah salah satu kabupaten yang berada di provinsi Sulawesi Selatan, Indonesia. Ibu kota dari kabupaten ini ada di kecamatan Makale. Tana Toraja memiliki luas wilayah 2.054,30 km² dan pada tahun 2021 memiliki penduduk sebanyak 270.489 jiwa dengan kepadatan 132 jiwa/km.</p>
-                </div>
-    
-                <div class="col-lg-6"  data-aos="fade-left" data-aos-duration="2000">
-                    <p>Suku Toraja yang mendiami daerah pegunungan dan mempertahankan gaya hidup yang khas dan masih menunjukkan gaya hidup Austronesia yang asli dan mirip dengan budaya suku Nias yang ada di provinsi Sumatra Utara. Daerah ini merupakan salah satu objek wisata unggulan di provinsi Sulawesi Selatan.</p>
-                </div>
-                <div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
-                  <img src="img/toraja1.jpg" alt="" class="img-fluid img-thumbnail">
-                  <small>Negeri Di Atas Awan</small>
-                </div>
-                <div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
-                  <img src="img/toraja4.jpg" alt="" class="img-fluid img-thumbnail">
-                  <small>Culture and Traditions of Tanah Toraja</small>
-                </div>
-                <div class="col-lg-4" data-aos="flip-up" data-aos-duration="2000">
-                  <img src="img/toraja2.jpg" alt="" class="img-fluid img-thumbnail">
-                  <small>Rumah Adat Tanah Toraja</small>
-                </div>
-            </div>
+            <div class="row">
+            <?php 
 
-    
-        <div class="row text-center mt-5" data-aos="flip-up" data-aos-duration="2000">
-            <div class="col-lg-12 mb-3">
-                <a href="kelurahan.php" class="btn btn-outline-success">View More Kelurahan</a>
+              $kelurahan = mysqli_query($conn, "SELECT * FROM tb_kelurahan");
+             
+             if(mysqli_num_rows($kelurahan) > 0){
+             while($kel = mysqli_fetch_array($kelurahan)){
+						?> 
+						
+                        <div class="col-lg-4">
+                            <a href="penduduk.php?id_kelurahan=<?php echo $kel['id_kelurahan'] ?>" class="text-decoration-none text-dark">
+                            <div class="card p-5">
+                                <strong><h5><?php echo $kel['nama_kelurahan'] ?></h5></strong>
+                            </div>
+                            </a>
+                        </div>
+
+            <?php }}else { ?>
+              <tr>
+                <th colspan="6">Belom Ada Pinjaman Kelurahan</th>
+              </tr>
+            <?php } ?>
+
             </div>
-        </div>
     
     </div>
     </div>

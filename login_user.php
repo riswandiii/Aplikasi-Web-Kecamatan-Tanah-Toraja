@@ -11,20 +11,20 @@ if(isset($_SESSION['login']))
     exit;
 }
 
-// Prose login admin
+// Prose login user
 if(isset($_POST['submit'])){
 
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-  $cek = mysqli_query($conn, "SELECT * FROM tb_admin WHERE email = '".$email."' AND password = '".$password."'");
+  $cek = mysqli_query($conn, "SELECT * FROM tb_user WHERE email = '".$email."' AND password = '".$password."'");
   if(mysqli_num_rows($cek) > 0){
       $d = mysqli_fetch_object($cek);
       $_SESSION['status_admin'] = true;
       $_SESSION['a_global'] = $d;	
-      $_SESSION['id_admin'] = $d->id_admin;
+      $_SESSION['id_user'] = $d->id_user;
       $_SESSION['login'] = true;
-      echo '<script>window.location="admin/dashboard.php"</script>';
+      echo '<script>window.location="index.php"</script>';
   }else{
       echo '<script>alert("Username atau password Anda salah!")</script>';
   }
@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+    <title>Login User</title>
 
     <style>
 
@@ -74,11 +74,10 @@ html body {
     <div class="container">
         <div class="row" data-aos="flip-up" data-aos-duration="2000">
         <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1">
-            <br><br>
             <div class="card mt-5 mb-5 p-5" id="card">
 
                         <h3 class="text-center">Welcome Back!</h3>
-                        <h5 class="text-center mt-2 ">Form Login Admin!</h5>
+                        <h5 class="text-center mt-2 ">Form Login User!</h5>
 
                         <!-- Jika email ataupassword salah -->
                         <div class="row py-3">
@@ -120,7 +119,8 @@ html body {
                 </div>
 
                 <div>
-                  <p><small>Login With User <a href="login_user.php" class="text-decoration-none">Click Di Sini</a></small></p>
+                  <p><small>Login With Admin <a href="login.php" class="text-decoration-none">Click Di Sini</a></small></p>
+                  <p><small>Belom punya akun? <a href="registrasi.php" class="text-decoration-none">Registrasi</a></small></p>
                 </div>
 
                 <!-- <div class="mt-4 text-center">

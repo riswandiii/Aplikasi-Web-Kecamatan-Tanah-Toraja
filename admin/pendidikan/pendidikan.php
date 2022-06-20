@@ -1,5 +1,5 @@
 <?php 
-// cek jika belom login
+// cek jika belum login
 session_start();
 if(!isset($_SESSION['login']))
 {
